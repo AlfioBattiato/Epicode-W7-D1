@@ -25,21 +25,17 @@ const user2 = new User("marco", "pala", 20, "Nuova America");
 /////////////////////////////////////////////////////
 
 const formNode = document.querySelector("form");
-const fname=document.getElementById("fname")
-const lname=document.getElementById("lname")
-const species=document.getElementById("species")
-const breed=document.getElementById("breed")
-const div=document.getElementsByClassName("animali")[0]
+const fname = document.getElementById("fname");
+const lname = document.getElementById("lname");
+const species = document.getElementById("species");
+const breed = document.getElementById("breed");
+const div = document.getElementsByClassName("animali")[0];
 
-
-
-function crea(variabile){
-    const p =document.createElement("p")
-    div.appendChild(p)
-    p.textContent=variabile
+function crea(variabile) {
+  const p = document.createElement("p");
+  div.appendChild(p);
+  p.textContent = variabile;
 }
-
-
 
 class Animal {
   constructor(nome, proprietario, specie, razza) {
@@ -48,14 +44,13 @@ class Animal {
     this.specie = specie;
     this.razza = razza;
   }
-   static stessopadrone(animale1,animale2){
-    if(animale1 && animale2){
-        if(animale1.proprietario===animale2.proprietario){
-            console.log("hanno lo stesso padrone")
-        }
+  static stessopadrone(animale1, animale2) {
+    if (animale1 && animale2) {
+      if (animale1.proprietario === animale2.proprietario) {
+        crea("stesso padrone" )
+        console.log("hanno lo stesso padrone");
+      }
     }
-   
-
   }
 }
 
@@ -63,15 +58,30 @@ const animali = [];
 
 formNode.onsubmit = function (e) {
   e.preventDefault();
-  const animale = new Animal(fname.value, lname.value, species.value, breed.value);
+  const animale = new Animal(
+    fname.value,
+    lname.value,
+    species.value,
+    breed.value
+  );
 
   animali.push(animale);
-  fname.value="";
-  lname.value="";
-  species.value="";
-  breed.value="";
+  fname.value = "";
+  lname.value = "";
+  species.value = "";
+  breed.value = "";
 
-  crea("nome cane: "+animale.nome +" Proprietario: "+ animale.proprietario+ " specie: "+ animale.specie + " razza: " + animale.razza)
+  crea(
+    "nome cane: " +
+      animale.nome +
+      " Proprietario: " +
+      animale.proprietario +
+      " specie: " +
+      animale.specie +
+      " razza: " +
+      animale.razza
+  );
 
-  Animal.stessopadrone(animali[0],animali[1])
+
+  Animal.stessopadrone(animali[0], animali[1]);
 };
