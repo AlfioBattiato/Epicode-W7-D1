@@ -29,6 +29,17 @@ const fname=document.getElementById("fname")
 const lname=document.getElementById("lname")
 const species=document.getElementById("species")
 const breed=document.getElementById("breed")
+const div=document.getElementsByClassName("animali")[0]
+
+
+
+function crea(variabile){
+    const p =document.createElement("p")
+    div.appendChild(p)
+    p.textContent=variabile
+}
+
+
 
 class Animal {
   constructor(nome, proprietario, specie, razza) {
@@ -36,6 +47,15 @@ class Animal {
     this.proprietario = proprietario;
     this.specie = specie;
     this.razza = razza;
+  }
+   static stessopadrone(animale1,animale2){
+    if(animale1 && animale2){
+        if(animale1.proprietario===animale2.proprietario){
+            console.log("hanno lo stesso padrone")
+        }
+    }
+   
+
   }
 }
 
@@ -51,5 +71,7 @@ formNode.onsubmit = function (e) {
   species.value="";
   breed.value="";
 
-  console.log(animali)
+  crea("nome cane: "+animale.nome +" Proprietario: "+ animale.proprietario+ " specie: "+ animale.specie + " razza: " + animale.razza)
+
+  Animal.stessopadrone(animali[0],animali[1])
 };
